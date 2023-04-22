@@ -1,5 +1,5 @@
 training_pipeline_config:
-  pipeline : back_order   # artifact store in this file
+  pipeline_name : back_order   # artifact store in this file
   artifact_dir : artifact
 
 
