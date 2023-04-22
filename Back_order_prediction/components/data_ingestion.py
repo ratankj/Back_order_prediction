@@ -33,10 +33,12 @@ class DataIngestion:
         
 
 
-    def download_data(self) ->str:
+    def download_data(self)->str:
 
             try:
-                download_url = self.data_ingestion_config.dataset_download_url  #download data
+                logging.info("Download data step")
+
+                download_url = self.data_ingestion_config.dataset_download_url  
                
                 raw_data_dir=self.data_ingestion_config.raw_data_dir
                
