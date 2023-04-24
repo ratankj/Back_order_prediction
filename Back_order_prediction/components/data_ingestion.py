@@ -34,41 +34,41 @@ class DataIngestion:
 
 
     def download_data(self)->str:
+        try:
+            logging.info("Download data step")
 
-            try:
-                logging.info("Download data step")
-
-                download_url = self.data_ingestion_config.dataset_download_url  
+            download_url = self.data_ingestion_config.dataset_download_url  
                
-                raw_data_dir=self.data_ingestion_config.raw_data_dir
-               
+            raw_data_dir =self.data_ingestion_config.raw_data_dir
+            logging.info(f"Download data {download_url}")
 
                  # if not available then make a folder raw_data_dir  and is available then exis_ok =TRUE
-                os.makedirs(raw_data_dir,exist_ok=True) 
+            os.makedirs(raw_data_dir,exist_ok=True) 
 
                 #after download the dataset we hae to call the base name
                 # 'https://example.com/files/back_order.csv' -- the base name is -  back_order.csv
 
-                back_order_file_name=os.path.basename(download_url)
+            back_order_file_name=os.path.basename(download_url)
 
-                raw_file_path=os.path.join(raw_data_dir,back_order_file_name)
+            raw_file_path=os.path.join(raw_data_dir,back_order_file_name)
 
-                logging.info(f"Downloading file from :[{download_url}] into :[{raw_file_path}]")
+            logging.info(f"Downloading file from :[{download_url}] into :[{raw_file_path}]")
                 
 
                 #here the file located at download_url will be downloaded and saved to raw_file_path
                 #it is a Python function that is used to download a file from a URL and save it to a local file path.
-                urllib.request.urlretrieve(download_url, raw_file_path)
+            urllib.request.urlretrieve(download_url, raw_file_path)
                 
-                logging.info(
-                    f"File :[{raw_file_path}] has been downloaded successfully.")
+            logging.info(f"File :[{raw_file_path}] has been downloaded successfully.")
                 
                 
-                return raw_file_path
+            return raw_file_path
 
-            except Exception as e:
-                raise CustomException(e,sys) from e  
-            
+        except Exception as e:
+            raise CustomException(e,sys) from e  
+    
+
+
 
 
     def split_data_as_train_test(self) -> DataIngestionArtifact:
@@ -91,10 +91,10 @@ class DataIngestion:
                 back_order_dataframe = pd.read_csv(back_order_file_path)
 
                 # dropping sku column
-                back_order_dataframe.drop(["sku"],axis=1,inplace=True) 
+                back_order_dataframe.drop([COLUMN_SKU],axis=1,inplace=True) 
 
                 #replace yes with 1 and no with 0 in went_on_backorder column
-                back_order_dataframe["went_on_backorder"] = np.where(back_order_dataframe["went_on_backorder"] == 'Yes', 1,0)
+                back_order_dataframe["went_on_backorder"] = np.where(back_order_dataframe[COLUMN_WENT_ON_BACKORDER] == 'Yes', 1,0)
 
                 logging.info(f"splitting data into train and test data")
 

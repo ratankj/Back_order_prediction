@@ -4,8 +4,9 @@ training_pipeline_config:
 
 
 data_ingestion_config:
-  dataset_download_url : https://raw.githubusercontent.com/ratankj/DATASET/main/Kaggle_Test_Dataset_v2.csv
+  dataset_download_url : https://raw.githubusercontent.com/ratankj/DATASET/main/backorder.csv
   raw_data_dir : raw_data
   ingested_dir: ingested_data
   ingested_train_dir : train
   ingested_test_dir : test
+
