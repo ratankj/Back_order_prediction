@@ -1,0 +1,59 @@
+FileName : "backorder.csv"
+
+
+NumberofColumns: 22
+
+ColumnNames:
+
+  national_inv: float
+  lead_time: float
+  in_transit_qty: float
+  forecast_3_month: float
+  forecast_6_month: float
+  forecast_9_month : float
+  sales_1_month : float
+  sales_3_month : float
+  sales_6_month : float
+  sales_9_month  : float
+  min_bank : float
+  potential_issue :  category
+  pieces_past_due : float
+  perf_6_month_avg : float
+  perf_12_month_avg : float
+  local_bo_qty :  float64
+  deck_risk : category
+  oe_constraint :  category
+  ppap_risk : category
+  stop_auto_buy : category
+  rev_stop :  category
+  went_on_backorder :  int
+
+
+Onehot_columns:
+  - potential_issue
+  - deck_risk
+  - oe_constraint
+  - ppap_risk
+  - stop_auto_buy
+  - rev_stop
+
+
+Transformation_columns:
+  - national_inv
+  - lead_time
+  - in_transit_qty
+  - forecast_3_month
+  - forecast_6_month
+  - forecast_9_month
+  - sales_1_month
+  - sales_3_month
+  - sales_6_month
+  - sales_9_month
+  - min_bank
+  - pieces_past_due
+  - perf_6_month_avg
+  - perf_12_month_avg
+  - local_bo_qty
+
+target_column: went_on_backorder
+

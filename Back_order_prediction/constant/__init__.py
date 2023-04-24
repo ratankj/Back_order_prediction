@@ -37,3 +37,11 @@ TRAINING_PIPELINE_ARTIFACT_DIR_KEY="artifact_dir"
 COLUMN_SKU = "sku"
 
 COLUMN_WENT_ON_BACKORDER="went_on_backorder"
+
+
+# data validataion part
+
+DATA_VALIDATAION_ARTIFACT_DIR = "data_validation"
+DATA_VALIDATION_CONFIG_KEY = "data_validation_config"
+DATA_VALIDATION_SCHEMA_FILE_NAME_KEY = "schema_file_name"
+DATA_VALIDATION_SCHEMA_DIR_KEY = "schema_dir"
